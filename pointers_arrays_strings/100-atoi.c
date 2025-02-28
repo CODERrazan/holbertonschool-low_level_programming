@@ -7,16 +7,26 @@
 */
 int _atoi(char *s)
 {
-int sign = 1, result = 0, i = 0;
-while (s[i] != '\0') /* Traverse through the string */
+int i = 0, sign = 1;
+unsigned int result = 0;
+/* Traverse string to handle signs and start of number */
+while (s[i] != '\0')
 {
-if (s[i] == '-') /* Handle negative sign */
+if (s[i] == '-')
 sign *= -1;
-else if (s[i] >= '0' && s[i] <= '9') /* Check for digit */
-result = (result * 10) + (s[i] - '0');
-else if (result > 0) /* Stop on non-digit after number */
+else if (s[i] >= '0' && s[i] <= '9')
 break;
 i++;
 }
-return (result *sign); /* Return the result with the correct sign */
+/* Convert digits to integer, handle overflow manually */
+while (s[i] >= '0' && s[i] <= '9')
+{
+result = (result * 10) + (s[i] - '0');
+if (result > 2147483647 && sign == 1)
+return (2147483647);
+if (result > 2147483648 && sign == -1)
+return (-2147483648);
+i++;
+}
+return (sign *result);
 }
