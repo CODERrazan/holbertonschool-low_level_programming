@@ -1,23 +1,22 @@
 #include "main.h"
 /**
-* _atoi - converts a string to an integer
-* @s: the string to be converted
+* _atoi - Converts a string to an integer.
+* @s: The string to convert.
 *
-* Return: the integer value of the converted string
+* Return: The integer value of the string, or 0 if no valid number exists.
 */
 int _atoi(char *s)
 {
-int i = 0, sign = 1, result = 0;
-while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
+int sign = 1, result = 0, i = 0;
+while (s[i] != '\0') /* Traverse through the string */
 {
-if (s[i] == '-')
-sign = sign * -1;
+if (s[i] == '-') /* Handle negative sign */
+sign *= -1;
+else if (s[i] >= '0' && s[i] <= '9') /* Check for digit */
+result = (result * 10) + (s[i] - '0');
+else if (result > 0) /* Stop on non-digit after number */
+break;
 i++;
 }
-while (s[i] != '\0' && (s[i] >= '0' && s[i] <= '9'))
-{
-result = result * 10 + (s[i] - '0');
-i++;
-}
-return (result *sign);
+return (result *sign); /* Return the result with the correct sign */
 }
