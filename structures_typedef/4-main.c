@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> /* Include this header for free */
+#include <stdlib.h>
 #include "dog.h"
 
 /**
@@ -27,4 +27,3 @@ int main(void)
 
     return (0);
 }
-
