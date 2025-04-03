@@ -38,4 +38,13 @@ int create_file(const char *filename, char *text_content);
 * Return: 1 on success, -1 on failure.
 */
 int append_text_to_file(const char *filename, char *text_content);
+/**
+* error_exit - Prints error message and exits with a code.
+* @code: The exit code.
+* @msg: The error message.
+* @fd: The file descriptor to close (if applicable, use -1 if none).
+*/
+void error_exit(int code, const char *msg, int fd);
+
+
 #endif /* MAIN_H */
